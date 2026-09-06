@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Customer Churn Intelligence</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- ==================================================
+             HEADER
+        ================================================== -->
+
+        <header class="header">
+
+            <h1>Customer Churn Intelligence</h1>
+
+            <p>
+                Predict customer churn risk and generate
+                actionable retention recommendations.
+            </p>
+
+        </header>
+
+
+        <!-- ==================================================
+             CUSTOMER INFORMATION
+        ================================================== -->
+
+        <section class="card">
+
+            <h2>Customer Information</h2>
+
+            <form id="customerForm">
+
+                <div class="form-grid">
+
+                    <!-- Gender -->
+                    <div class="form-group">
+                        <label for="gender">Gender</label>
+
+                        <select id="gender" name="gender">
+                            <option value="Female">Female</option>
+                            <option value="Male">Male</option>
+                        </select>
+                    </div>
+
+
+                    <!-- Senior Citizen -->
+                    <div class="form-group">
+                        <label for="SeniorCitizen">
+                            Senior Citizen
+                        </label>
+
+                        <select id="SeniorCitizen" name="SeniorCitizen">
+                            <option value="0">No</option>
+                            <option value="1">Yes</option>
+                        </select>
+                    </div>
+
+
+                    <!-- Partner -->
+                    <div class="form-group">
+                        <label for="Partner">Partner</label>
+
+                        <select id="Partner" name="Partner">
+                            <option value="No">No</option>
+                            <option value="Yes">Yes</option>
+                        </select>
+                    </div>
+
+
+                    <!-- Dependents -->
+                    <div class="form-group">
+                        <label for="Dependents">Dependents</label>
+
+                        <select id="Dependents" name="Dependents">
+                            <option value="No">No</option>
+                            <option value="Yes">Yes</option>
+                        </select>
+                    </div>
+
+
+                    <!-- Tenure -->
+                    <div class="form-group">
+                        <label for="tenure">
+                            Tenure (months)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="tenure"
+                            name="tenure"
+                            min="0"
+                            max="72"
+                            value="5"
+                            required
+                        >
+                    </div>
+
+
+                    <!-- Phone Service -->
+                    <div class="form-group">
+                        <label for="PhoneService">
+                            Phone Service
+                        </label>
+
+                        <select id="PhoneService" name="PhoneService">
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+
+
+                    <!-- Multiple Lines -->
+                    <div class="form-group">
+                        <label for="MultipleLines">
+                            Multiple Lines
+                        </label>
+
+                        <select id="MultipleLines" name="MultipleLines">
+                            <option value="No">No</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No phone service">
+                                No phone service
+                            </option>
+                        </select>
+                    </div>
+
+
+                    <!-- Internet Service -->
+                    <div class="form-group">
+                        <label for="InternetService">
+                            Internet Service
+                        </label>
+
+                        <select
+                            id="InternetService"
+                            name="InternetService"
+                        >
+                            <option value="Fiber optic">
+                                Fiber optic
+                            </option>
+
+                            <option value="DSL">
+                                DSL
+                            </option>
+
+                            <option value="No">
+                                No
+                            </option>
+                        </select>
+                    </div>
+
+
+                    <!-- Online Security -->
+                    <div class="form-group">
+                        <label for="OnlineSecurity">
+                            Online Security
+                        </label>
+
+                        <select
+                            id="OnlineSecurity"
+                            name="OnlineSecurity"
+                        >
+                            <option value="No">No</option>
+                            <option value="Yes">Yes</option>
+
+                            <option value="No internet service">
+                                No internet service
+                            </option>
+                        </select>
+                    </div>
+
+
+                    <!-- Online Backup -->
+                    <div class="form-group">
+                        <label for="OnlineBackup">
+                            Online Backup
+                        </label>
+
+                        <select
+                            id="OnlineBackup"
+                            name="OnlineBackup"
+                        >
+                            <option value="No">No</option>
+                            <option value="Yes">Yes</option>
+
+                            <option value="No internet service">
+                                No internet service
+                            </option>
+                        </select>
+                    </div>
+
+
+                    <!-- Device Protection -->
+                    <div class="form-group">
+                        <label for="DeviceProtection">
+                            Device Protection
+                        </label>
+
+                        <select
+                            id="DeviceProtection"
+                            name="DeviceProtection"
+                        >
+                            <option value="No">No</option>
+                            <option value="Yes">Yes</option>
+
+                            <option value="No internet service">
+                                No internet service
+                            </option>
+                        </select>
+                    </div>
+
+
+                    <!-- Tech Support -->
+                    <div class="form-group">
+                        <label for="TechSupport">
+                            Tech Support
+                        </label>
+
+                        <select
+                            id="TechSupport"
+                            name="TechSupport"
+                        >
+                            <option value="No">No</option>
+                            <option value="Yes">Yes</option>
+
+                            <option value="No internet service">
+                                No internet service
+                            </option>
+                        </select>
+                    </div>
+
+
+                    <!-- Streaming TV -->
+                    <div class="form-group">
+                        <label for="StreamingTV">
+                            Streaming TV
+                        </label>
+
+                        <select
+                            id="StreamingTV"
+                            name="StreamingTV"
+                        >
+                            <option value="No">No</option>
+                            <option value="Yes">Yes</option>
+
+                            <option value="No internet service">
+                                No internet service
+                            </option>
+                        </select>
+                    </div>
+
+
+                    <!-- Streaming Movies -->
+                    <div class="form-group">
+                        <label for="StreamingMovies">
+                            Streaming Movies
+                        </label>
+
+                        <select
+                            id="StreamingMovies"
+                            name="StreamingMovies"
+                        >
+                            <option value="No">No</option>
+                            <option value="Yes">Yes</option>
+
+                            <option value="No internet service">
+                                No internet service
+                            </option>
+                        </select>
+                    </div>
+
+
+                    <!-- Contract -->
+                    <div class="form-group">
+                        <label for="Contract">
+                            Contract
+                        </label>
+
+                        <select
+                            id="Contract"
+                            name="Contract"
+                        >
+                            <option value="Month-to-month">
+                                Month-to-month
+                            </option>
+
+                            <option value="One year">
+                                One year
+                            </option>
+
+                            <option value="Two year">
+                                Two year
+                            </option>
+                        </select>
+                    </div>
+
+
+                    <!-- Paperless Billing -->
+                    <div class="form-group">
+                        <label for="PaperlessBilling">
+                            Paperless Billing
+                        </label>
+
+                        <select
+                            id="PaperlessBilling"
+                            name="PaperlessBilling"
+                        >
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+
+
+                    <!-- Payment Method -->
+                    <div class="form-group">
+                        <label for="PaymentMethod">
+                            Payment Method
+                        </label>
+
+                        <select
+                            id="PaymentMethod"
+                            name="PaymentMethod"
+                        >
+                            <option value="Electronic check">
+                                Electronic check
+                            </option>
+
+                            <option value="Mailed check">
+                                Mailed check
+                            </option>
+
+                            <option value="Bank transfer (automatic)">
+                                Bank transfer (automatic)
+                            </option>
+
+                            <option value="Credit card (automatic)">
+                                Credit card (automatic)
+                            </option>
+                        </select>
+                    </div>
+
+
+                    <!-- Monthly Charges -->
+                    <div class="form-group">
+                        <label for="MonthlyCharges">
+                            Monthly Charges
+                        </label>
+
+                        <input
+                            type="number"
+                            id="MonthlyCharges"
+                            name="MonthlyCharges"
+                            step="0.01"
+                            min="0"
+                            value="92"
+                            required
+                        >
+                    </div>
+
+
+                    <!-- Total Charges -->
+                    <div class="form-group">
+                        <label for="TotalCharges">
+                            Total Charges
+                        </label>
+
+                        <input
+                            type="number"
+                            id="TotalCharges"
+                            name="TotalCharges"
+                            step="0.01"
+                            min="0"
+                            value="460"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+
+                <!-- ==================================================
+                     PREDICT BUTTON
+                ================================================== -->
+
+                <button
+                    type="submit"
+                    id="predictButton"
+                >
+                    Predict Churn
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- ==================================================
+             LOADING
+        ================================================== -->
+
+        <div
+            id="loading"
+            class="loading hidden"
+        >
+            Analyzing customer...
+        </div>
+
+
+        <!-- ==================================================
+             ERROR
+        ================================================== -->
+
+        <div
+            id="error"
+            class="error hidden"
+        ></div>
+
+
+        <!-- ==================================================
+             RESULTS
+        ================================================== -->
+
+        <section
+            id="results"
+            class="results hidden"
+        >
+
+            <!-- ==================================================
+                 AI ASSESSMENT
+            ================================================== -->
+
+            <div class="card assessment-card">
+
+                <div class="section-heading">
+
+                    <span class="section-label">
+                        AI RISK ASSESSMENT
+                    </span>
+
+                    <h2>
+                        Prediction Intelligence
+                    </h2>
+
+                    <p>
+                        Model-based assessment of this customer's
+                        likelihood of churn.
+                    </p>
+
+                </div>
+
+
+                <div class="assessment-layout">
+
+                    <!-- Churn Score -->
+
+                    <div class="score-panel">
+
+                        <div class="score-ring">
+
+                            <div class="score-content">
+
+                                <strong id="churnProbability">
+                                    --%
+                                </strong>
+
+                                <span>
+                                    CHURN RISK
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="probability-bar">
+
+                            <div
+                                id="probabilityFill"
+                                class="probability-fill"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Assessment Summary -->
+
+                    <div class="assessment-summary">
+
+                        <div
+                            class="status-card"
+                            id="predictionBox"
+                        >
+
+                            <span class="status-label">
+                                PREDICTION
+                            </span>
+
+                            <strong id="prediction">
+                                --
+                            </strong>
+
+                        </div>
+
+
+                        <div
+                            class="status-card"
+                            id="riskBox"
+                        >
+
+                            <span class="status-label">
+                                RISK LEVEL
+                            </span>
+
+                            <strong id="riskLevel">
+                                --
+                            </strong>
+
+                        </div>
+
+
+                        <div class="status-card">
+
+                            <span class="status-label">
+                                RETENTION PRIORITY
+                            </span>
+
+                            <strong id="retentionPriority">
+                                --
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ==================================================
+                 RISK FACTORS
+            ================================================== -->
+
+            <div class="card">
+
+                <div class="section-heading">
+
+                    <span class="section-label">
+                        MODEL EXPLANATION
+                    </span>
+
+                    <h2>
+                        ⚠ Risk Factors
+                    </h2>
+
+                    <p>
+                        Factors that are pushing the model's
+                        prediction toward higher churn risk.
+                    </p>
+
+                </div>
+
+                <ul id="riskFactors"></ul>
+
+            </div>
+
+
+            <!-- ==================================================
+                 PROTECTIVE FACTORS
+            ================================================== -->
+
+            <div class="card">
+
+                <div class="section-heading">
+
+                    <span class="section-label">
+                        POSITIVE SIGNALS
+                    </span>
+
+                    <h2>
+                        🛡 Protective Factors
+                    </h2>
+
+                    <p>
+                        Factors that are pushing the model's
+                        prediction toward lower churn risk.
+                    </p>
+
+                </div>
+
+                <ul id="protectiveFactors"></ul>
+
+            </div>
+
+
+            <!-- ==================================================
+                 RETENTION ACTION PLAN
+            ================================================== -->
+
+            <div class="card">
+
+                <div class="section-heading">
+
+                    <span class="section-label">
+                        BUSINESS ACTION PLAN
+                    </span>
+
+                    <h2>
+                        ✦ Retention Recommendations
+                    </h2>
+
+                    <p>
+                        Suggested actions based on the customer's
+                        characteristics and predicted churn risk.
+                    </p>
+
+                </div>
+
+                <ul id="recommendations"></ul>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- ==================================================
+         JAVASCRIPT
+    ================================================== -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
