@@ -1,8 +1,21 @@
+from pathlib import Path
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 from src.prediction_service import predict_customer
+
+
+# ==================================================
+# Project paths
+# ==================================================
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+FRONTEND_DIR = PROJECT_ROOT / "frontend"
+
 
 # ==================================================
 # Create FastAPI application
@@ -13,6 +26,7 @@ app = FastAPI(
     description="ML-powered customer churn prediction and retention system",
     version="1.0.0"
 )
+
 
 # ==================================================
 # CORS Configuration
@@ -25,6 +39,18 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+# ==================================================
+# Serve frontend static files
+# ==================================================
+
+app.mount(
+    "/static",
+    StaticFiles(directory=FRONTEND_DIR),
+    name="static"
+)
+
 
 # ==================================================
 # Customer input schema
@@ -54,14 +80,14 @@ class Customer(BaseModel):
 
 
 # ==================================================
-# Health check
+# Frontend
 # ==================================================
 
-@app.get("/")
+@app.get("/", include_in_schema=False)
 def home():
-    return {
-        "message": "Customer Churn Prediction API is running"
-    }
+    return FileResponse(
+        FRONTEND_DIR / "index.html"
+    )
 
 
 # ==================================================
