@@ -138,7 +138,7 @@ form.addEventListener("submit", async function (event) {
         // ====================================
 
         const response = await fetch(
-            "http://127.0.0.1:8000/predict",
+            "/predict",
             {
                 method: "POST",
 
