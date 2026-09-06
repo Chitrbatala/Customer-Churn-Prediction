@@ -89,6 +89,9 @@ def home():
         FRONTEND_DIR / "index.html"
     )
 
+@app.get("/health")
+def health():
+    return {"status": "healthy"}
 
 # ==================================================
 # Prediction endpoint
